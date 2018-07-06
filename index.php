@@ -16,7 +16,7 @@ while ( $film = $result->fetch(PDO::FETCH_ASSOC)  ) {
 	echo "<br><br>";
 }
 
-//print_r( $result->fetch(PDO::FEETCH_ASSOC) ); //Выод 1 записи из БД и запись их в ассоциативный массив(каждый последующий вызов будет вызывать следующую запись)
+//print_r( $result->fetch(PDO::FEETCH_ASSOC) ); //Вывод 1 записи из БД и запись их в ассоциативный массив(каждый последующий вызов будет вызывать следующую запись)
 
 echo "<hr />";
 
@@ -58,7 +58,8 @@ while ( $result->fetch(PDO::FETCH_ASSOC) ) {
 /*
 // 1. Выборка данных без защиты от SQL инъекций
 $db = new PDO('mysql:host=localhost;dbname=mini-site', 'root', '');
-/*$username = 'Joker';
+/*
+$username = 'Joker';
 $password = '555';
 
 $sql = "SELECT * FROM `users` WHERE `name` ='{$username}' AND `password` = '{$password}' LIMIT 1";
@@ -66,7 +67,7 @@ $result = $db->query($sql);
 
 echo "<h2>ции: </h2>";
 //print_r( $result->fetch(PDO::FETCH_ASSOC) );
-Выборка записи без защиты от SQL инъек
+
 if ( $result->rowCount() == 1 ) {
 	$user = $result->fetch(PDO::FETCH_ASSOC);
 	echo "Имя пользователя: {$user['name']} <br>";
@@ -118,13 +119,13 @@ $stmt->bindValue(':username', $username);
 $stmt->bindValue(':password', $password);
 $stmt->execute();
 
-//Если не хотим для кадого значения вызывать метод bindValue то можно сразу в ->execute
+//Если не хотим для каждого значения вызывать метод bindValue то можно сразу в ->execute
 //$stmt->execute(array(':username' => $usermname, ':password' => $password));
 
 $stmt->bindColumn('name', $name);
 $stmt->bindColumn('email', $email);
 
-echo "<h2>Выборка записи с ручной автоматической защитой от SQL инъекции: </h2>";
+echo "<h2>Выборка записи с автоматической защитой от SQL инъекции: </h2>";
 $stmt->fetch();
 echo "Имя пользователя: {$user['name']} <br>";
 echo "Email пользователя: {$user['email']} <br>";
